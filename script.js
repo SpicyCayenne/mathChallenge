@@ -1,2 +1,2 @@
-let challenge = new MathChallenge;
-document.getElementById('submit').addEventListener('click', function() {challenge.play()});
+let game = new mathChallenge;
+game.play();

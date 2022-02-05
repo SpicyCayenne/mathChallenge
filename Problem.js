@@ -10,14 +10,15 @@ class Problem {
     setAnswer () {
         switch (this.operator) {
             case '+':
-                return this.term1 + this.term2;
+                this.solution = this.term1 + this.term2;
             case '-':
-                return this.term1 - this.term2;
+                this.solution = this.term1 - this.term2;
             case '*':
-                return this.term1 * this.term2;
+                this.solution = this.term1 * this.term2;
             case '%':
-                return this.term1 % this.term2;
+                this.solution = this.term1 % this.term2;
         }
+        return this.solution;
     }
 
     setExpression() {
