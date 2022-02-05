@@ -17,7 +17,7 @@ class MathChallenge {
             if (myAnswer === correctAnswer) {
                 score++;
                 problem = new Problem();
-                document.getElementById('problem').innerText = problem.setExpression();
+                document.getElementById('problem').innerText = `Correct!\r${problem.setExpression()}`;
                 document.getElementById('myAnswer').value = null;
             } else {
                 document.getElementById('endGame').style.display = 'flex';
