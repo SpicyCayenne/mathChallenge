@@ -1,2 +1,2 @@
-let game = new mathChallenge;
+let game = new MathChallenge();
 game.play();
