@@ -8,7 +8,7 @@ class MathChallenge {
         })
         document.getElementById('myAnswer').addEventListener('keyup',(e) => {
             if (e.key === "Enter") {
-            this.check(problem, score);}
+                this.check(problem, score);}
             }
         )
         document.getElementById('submit').addEventListener('click',() => {
@@ -19,12 +19,12 @@ class MathChallenge {
 
     check(theProblem, score) {
         let myAnswer = parseInt(document.getElementById('myAnswer').value);
-        let correctAnswer = theProblem.getAnswer();
+        let correctAnswer = theProblem.getAnswer(); //on the second round, this is still using the value from the first round
         if (myAnswer === correctAnswer) {
             theProblem = new Problem();
             document.getElementById('problem').innerText = `Correct!\r${theProblem.getExpression()}`;
             document.getElementById('myAnswer').value = null;
-            return score++;
+            return score++, theProblem;
         } else {
             this.gameOver(correctAnswer, score);
         }
