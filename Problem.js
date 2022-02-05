@@ -8,7 +8,7 @@ class Problem {
         this.expression = 0;
     }
 
-    setAnswer () {
+    getAnswer () {
         switch (this.operator) {
             case '+':
                 this.solution = this.term1 + this.term2;
@@ -26,7 +26,7 @@ class Problem {
         return this.solution;
     }
 
-    setExpression() {
+    getExpression() {
         this.expression = `${this.term1} ${this.operator} ${this.term2} = ?`
         return this.expression;
     }
