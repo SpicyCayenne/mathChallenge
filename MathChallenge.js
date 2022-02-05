@@ -1,45 +1,45 @@
 class MathChallenge {
+    constructor() {
+        this.score = 0;
+    }
     play() {
         let problem = new Problem();
-        let score = 0;
-        document.getElementById('problem').innerText = problem.getExpression();
-        document.getElementById('playAgain').addEventListener('click', () => {
-            this.newGame();
-        })
+        document.getElementById('problem').innerText += problem.getExpression();
+
         document.getElementById('myAnswer').addEventListener('keyup',(e) => {
             if (e.key === "Enter") {
-                this.check(problem, score);}
+                this.check(problem);}
             }
         )
-        document.getElementById('submit').addEventListener('click',() => {
-            this.check(problem, score);
-            }
-        )
+        document.getElementById('submit').addEventListener('click', (e) => {this.check(problem)});
     }
 
-    check(theProblem, score) {
+    check(theProblem) {
         let myAnswer = parseInt(document.getElementById('myAnswer').value);
         let correctAnswer = theProblem.getAnswer(); //on the second round, this is still using the value from the first round
         if (myAnswer === correctAnswer) {
-            theProblem = new Problem();
-            document.getElementById('problem').innerText = `Correct!\r${theProblem.getExpression()}`;
+            document.getElementById('problem').innerText = `Correct!\r`;
             document.getElementById('myAnswer').value = null;
-            return score++, theProblem;
+            document.getElementById('myAnswer').removeEventListener('keyup',(e) => {
+                if (e.key === "Enter") {
+                    this.check(problem);}
+                }
+            )
+            document.getElementById('submit').removeEventListener('click',() => {
+                this.check(problem);
+                }
+            )
+            this.score++
+            this.play();
         } else {
-            this.gameOver(correctAnswer, score);
+            this.gameOver(correctAnswer, this.score);
         }
     }
 
     gameOver(correctAnswer, score) {
+        document.getElementById('problem').innerText = '';
         document.getElementById('endGame').style.display = 'flex';
         document.getElementById('question').style.display = 'none';
-        document.getElementById('message').innerText = `Game Over! Correct answer was ${correctAnswer}\rScore: ${score}`;
-    }
-
-    newGame() {
-        document.getElementById('endGame').style.display = 'none';
-        document.getElementById('question').style.display = 'flex';
-        document.getElementById('myAnswer').value = null;
-        return this.play();
+        document.getElementById('message').innerText = `Game Over! Correct answer was ${correctAnswer}\rScore: ${this.score}`;
     }
 }
