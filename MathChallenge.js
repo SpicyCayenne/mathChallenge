@@ -7,6 +7,7 @@ class MathChallenge {
             score = 0;
             problem = new Problem();
             document.getElementById('problem').innerText = problem.setExpression();
+            document.getElementById('myAnswer').value = null;
             document.getElementById('endGame').style.display = 'none';
             document.getElementById('question').style.display = 'flex';
         })
@@ -17,6 +18,7 @@ class MathChallenge {
                 score++;
                 problem = new Problem();
                 document.getElementById('problem').innerText = problem.setExpression();
+                document.getElementById('myAnswer').value = null;
             } else {
                 document.getElementById('endGame').style.display = 'flex';
                 document.getElementById('question').style.display = 'none';
