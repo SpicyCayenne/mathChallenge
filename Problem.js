@@ -1,5 +1,5 @@
 class Problem {
-    constructor() {
+    constructor(_term1, _term2, _operator, _solution, _expression) {
         this.term1 = Math.random()*10;
         this.term2 = Math.random()*10;
         this.operator = ['+', '-', '*', '%'][Math.random()*4];
@@ -18,11 +18,6 @@ class Problem {
             case '%':
                 return this.term1 % this.term2;
         }
-    }
-
-    getAnswer() {
-        this.solution = this.setAnswer();
-        return this.solution;
     }
 
     setExpression() {
